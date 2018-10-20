@@ -1,8 +1,16 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": "elixir",
+			"name": "Elixir"
+		},
+		{
+			"path": ".",
+			"name": "Root"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"python.pythonPath": "C:\\Users\\maneptha\\AppData\\Local\\Programs\\Python\\Python36\\python.exe",
+		"editor.formatOnSave": true
+	}
 }

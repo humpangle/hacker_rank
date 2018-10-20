@@ -27,3 +27,24 @@ def is_matched(exp):
         elif not stack or stack.pop() != item:
             return False
     return not stack
+
+def maximumToys(prices, k):
+    num_toys = 0
+    total_cost_toys = 0
+    for p in sorted(set(prices)):
+        num_toys += 1
+        total_cost_toys += p
+
+        if total_cost_toys == k:
+            return num_toys
+        if total_cost_toys > k:
+            return num_toys - 1
+
+if __name__ == '__main__':
+        p = maximumToys(map(lambda x: int(x.strip()), "1 12 5 111 200 1000 10".split(" ")), 50)
+        print(p)
+
+# if __name__ == '__main__':
+#     string = open(r"C:\Users\maneptha\Desktop\foss\hackerrank\ctci-balanced-brackets-English\input\input20.txt").read().split("\n")
+#     string = map(lambda x: str(is_matched(x.strip(" "))), string)
+#     print(list(string))
