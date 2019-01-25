@@ -44,7 +44,7 @@ def transverse(node):
         (right and transverse(right) or [])
 
 
-def checkBST(root):
+def check_binary_search_tree_(root):
     if root is None:
         return True
     data, left, right = root.data, root.left, root.right
@@ -62,10 +62,10 @@ def checkBST(root):
     if data_right and not all(data < x for x in data_right):
         return False
 
-    return checkBST(right) and checkBST(left)
+    return check_binary_search_tree_(right) and check_binary_search_tree_(left)
 
 
 # root = Node.make_node([int(x.strip()) for x in '1 2 4 4 5 6 7'.split()])
 root = Node.make_node([int(x.strip())
                        for x in '1 2 3 4 5 6 7 8 9 10 11 13 12 14 15'.split()])
-print(checkBST(root))
+print(check_binary_search_tree_(root))
