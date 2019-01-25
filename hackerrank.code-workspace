@@ -1,16 +1,25 @@
 {
-	"folders": [
-		{
-			"path": "elixir",
-			"name": "Elixir"
-		},
-		{
-			"path": ".",
-			"name": "Root"
-		}
-	],
-	"settings": {
-		"python.pythonPath": "C:\\Users\\maneptha\\AppData\\Local\\Programs\\Python\\Python36\\python.exe",
-		"editor.formatOnSave": true
-	}
+  "folders": [
+    {
+      "path": "elixir",
+      "name": "Elixir"
+    },
+    {
+      "path": ".",
+      "name": "Root"
+    }
+  ],
+  "settings": {
+    "python.pythonPath": "C:\\Users\\maneptha\\Miniconda3\\envs\\django\\python.exe",
+
+    "python.linting.pylintEnabled": true,
+    "editor.formatOnSave": true,
+    "code-runner.executorMap": {
+      "javascript": "node",
+      "php": "php",
+      "python": "C:\\Users\\maneptha\\Miniconda3\\envs\\django\\python -u",
+      "typescript": "ts-node",
+      "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt"
+    }
+  }
 }
