@@ -18,6 +18,7 @@
     }
   ],
   "settings": {
-    "debug.node.autoAttach": "on"
+    "debug.node.autoAttach": "on",
+    "python.linting.pylintEnabled": true
   }
 }
