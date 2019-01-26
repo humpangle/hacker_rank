@@ -5,6 +5,10 @@
       "name": "Elixir"
     },
     {
+      "path": "javascript",
+      "name": "Javascript"
+    },
+    {
       "path": ".",
       "name": "Root"
     }
@@ -21,6 +25,7 @@
       "typescript": "ts-node",
       "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt"
     },
-    "python.unitTest.pyTestEnabled": true
+    "python.unitTest.pyTestEnabled": true,
+    "debug.node.autoAttach": "on"
   }
 }
