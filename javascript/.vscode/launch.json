@@ -16,7 +16,8 @@
         "false"
       ],
       "internalConsoleOptions": "neverOpen",
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "port": 9229
     },
     {
       "type": "node",

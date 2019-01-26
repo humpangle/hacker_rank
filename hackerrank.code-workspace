@@ -9,23 +9,11 @@
       "name": "Javascript"
     },
     {
-      "path": ".",
-      "name": "Root"
+      "path": "python",
+      "name": "Python"
     }
   ],
   "settings": {
-    "python.pythonPath": "C:\\Users\\maneptha\\Miniconda3\\envs\\django\\python.exe",
-
-    "python.linting.pylintEnabled": true,
-    "editor.formatOnSave": true,
-    "code-runner.executorMap": {
-      "javascript": "node",
-      "php": "php",
-      "python": "C:\\Users\\maneptha\\Miniconda3\\envs\\django\\python -u",
-      "typescript": "ts-node",
-      "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt"
-    },
-    "python.unitTest.pyTestEnabled": true,
     "debug.node.autoAttach": "on"
   }
 }

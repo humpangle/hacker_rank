@@ -61,3 +61,7 @@ def test_walks_node():
 ])
 def test_is_binary_search_with_one_data_node(node, expected):
     assert is_binary_search(node) == expected
+
+
+if __name__ == "__main__":
+    pytest.main(sys.argv)
