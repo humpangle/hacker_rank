@@ -20,6 +20,7 @@
       "python": "C:\\Users\\maneptha\\Miniconda3\\envs\\django\\python -u",
       "typescript": "ts-node",
       "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt"
-    }
+    },
+    "python.unitTest.pyTestEnabled": true
   }
 }
