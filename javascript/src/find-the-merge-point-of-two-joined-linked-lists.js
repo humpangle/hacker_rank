@@ -3,6 +3,17 @@ class SinglyLinkedListNode {
     this.data = nodeData;
     this.next = null;
   }
+
+  getDatas() {
+    const datas = [];
+    let c = this;
+    while (c) {
+      datas.push(c.data);
+      c = c.next;
+    }
+
+    return datas;
+  }
 }
 
 class SinglyLinkedList {
@@ -36,8 +47,9 @@ class SinglyLinkedList {
 }
 
 function findMergeNode(headA, headB) {
-  let c1 = headA,
-    c2;
+  let c1 = headA;
+
+  let c2;
 
   while (c1) {
     c2 = headB;
@@ -55,32 +67,51 @@ const getQuestion = require("./get-question");
 
 function makeQuestion(fileName) {
   return getQuestion(
-    "find-the-merge-point-of-two-joined-linked-lists/" + fileName
+    `find-the-merge-point-of-two-joined-linked-lists/${fileName}`
   );
 }
 
-let input = makeQuestion("input01.txt").split("\n");
-let numIterations = parseInt(input[0], 10);
+const input = makeQuestion("input1.txt").split("\n");
+const numIterations = parseInt(input[0], 10);
+let mergeIndex = parseInt(input[1], 10);
+let node1StartIndex;
+let node2StartIndex = 0;
+let nodesCount2 = 1;
+let nodesCount1 = 0;
 
 for (let iterationIndex = 0; iterationIndex < numIterations; iterationIndex++) {
-  const mergeIndex = parseInt(input[1], 10),
-    nodesCount1 = parseInt(input[2], 10),
-    linkedList1 = new SinglyLinkedList(),
-    linkedList2 = new SinglyLinkedList(),
-    nodesCount2 = parseInt(input[nodesCount1 + 3], 10);
+  node1StartIndex = node2StartIndex + nodesCount2 + 1;
+  nodesCount1 = parseInt(input[node1StartIndex], 10);
 
-  let dataIndex, i;
+  node2StartIndex = node1StartIndex + nodesCount1 + 1;
+  nodesCount2 = parseInt(input[node2StartIndex], 10);
+
+  let linkedList1 = new SinglyLinkedList();
+  let linkedList2 = new SinglyLinkedList();
+  let dataIndex;
+  let i;
+  let data;
 
   for (dataIndex = 0; dataIndex < nodesCount1; dataIndex++) {
-    linkedList1.insertNode(input[3 + dataIndex]);
+    data = parseInt(input[node1StartIndex + dataIndex + 1], 10);
+    linkedList1.insertNode(data);
   }
+
+  // console.log("node2StartIndex", node2StartIndex);
 
   for (dataIndex = 0; dataIndex < nodesCount2; dataIndex++) {
-    linkedList2.insertNode(input[3 + nodesCount1 + dataIndex]);
+    data = parseInt(input[node2StartIndex + dataIndex + 1], 10);
+    linkedList2.insertNode(data);
+    // console.log(data);
   }
+  // console.log("\n\n");
 
-  let p1 = linkedList1.head,
-    p2 = linkedList2.head;
+  let p1 = linkedList1.head;
+  let p2 = linkedList2.head;
+
+  // if (iterationIndex === 0) {
+
+  // }
 
   for (i = 0; i < nodesCount1; i++) {
     if (i < mergeIndex) {

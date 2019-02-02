@@ -19,6 +19,9 @@
   ],
   "settings": {
     "debug.node.autoAttach": "on",
-    "python.linting.pylintEnabled": true
+    "python.linting.pylintEnabled": true,
+    "[javascript]": {
+      "editor.formatOnSave": false
+    }
   }
 }
