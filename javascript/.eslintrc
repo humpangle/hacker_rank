@@ -6,6 +6,7 @@
     "consistent-return": "off",
     "no-plusplus": "off",
     "no-console": "off",
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["error"],
+    "no-param-reassign": 0
   }
 }
