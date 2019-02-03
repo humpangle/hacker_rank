@@ -71,7 +71,7 @@ function makeQuestion(fileName) {
   );
 }
 
-const input = makeQuestion("input1.txt").split("\n");
+const input = makeQuestion("input01.txt").split("\n");
 const numIterations = parseInt(input[0], 10);
 let mergeIndex = parseInt(input[1], 10);
 let node1StartIndex;
@@ -97,21 +97,13 @@ for (let iterationIndex = 0; iterationIndex < numIterations; iterationIndex++) {
     linkedList1.insertNode(data);
   }
 
-  // console.log("node2StartIndex", node2StartIndex);
-
   for (dataIndex = 0; dataIndex < nodesCount2; dataIndex++) {
     data = parseInt(input[node2StartIndex + dataIndex + 1], 10);
     linkedList2.insertNode(data);
-    // console.log(data);
   }
-  // console.log("\n\n");
 
   let p1 = linkedList1.head;
   let p2 = linkedList2.head;
-
-  // if (iterationIndex === 0) {
-
-  // }
 
   for (i = 0; i < nodesCount1; i++) {
     if (i < mergeIndex) {
