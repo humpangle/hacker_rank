@@ -8,5 +8,9 @@
     "no-console": "off",
     "prettier/prettier": ["error"],
     "no-param-reassign": 0
+  },
+  "env": {
+    "browser": true,
+    "node": true
   }
 }
