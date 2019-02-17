@@ -1,36 +1,34 @@
-export interface Node {
-  data: number;
-  left: Node | null;
-  right: Node | null;
+export class Node {
+  constructor(
+    public data: number,
+    public left: null | Node = null,
+    public right: null | Node = null
+  ) {}
 }
 
-export function makeNode(nodeData: number[]) {
-  const len = nodeData.length;
+export function makeNode(dataList: number[]) {
+  const len = dataList.length;
 
-  if (len === 0) {
-    throw new Error("You must specify at least one node data");
-  }
-
-  let node: Node;
-
-  if (len === 1) {
-    node = {
-      data: nodeData[0],
-      left: null,
-      right: null
-    };
-
-    return node;
+  if (!len) {
+    throw new Error("must");
   }
 
   const mid = Math.floor(len / 2);
-  node = {
-    data: nodeData[mid],
-    left: makeNode(nodeData.slice(0, mid)),
-    right: len === 2 ? null : makeNode(nodeData.slice(mid + 1))
-  };
+  const root = new Node(dataList[mid]);
 
-  return node;
+  if (len === 1) {
+    return root;
+  }
+
+  if (len === 2) {
+    root.left = new Node(dataList[0]);
+    return root;
+  }
+
+  root.right = makeNode(dataList.slice(mid + 1));
+  root.left = makeNode(dataList.slice(0, mid));
+
+  return root;
 }
 
 export function walk(node: Node): number[] {
@@ -40,20 +38,44 @@ export function walk(node: Node): number[] {
     .concat((right && walk(right)) || []);
 }
 
-export function isBinarySearch(node: Node): boolean {
-  const { data, left, right } = node;
-
-  if (left === null && right === null) {
+export function isBinarySearch(root: Node): boolean {
+  if (!root) {
     return true;
   }
 
-  if (!right || !left) {
+  const { data, left, right } = root;
+
+  if (!left && !right) {
+    return true;
+  }
+
+  if (!left || !right) {
     return false;
   }
 
-  if (walk(right).find(r => data >= r) || walk(left).find(l => data <= l)) {
+  return (
+    compare(left, data, "left") &&
+    compare(right, data, "right") &&
+    isBinarySearch(left as Node) &&
+    isBinarySearch(right as Node)
+  );
+}
+
+function compare(
+  node: Node | null,
+  comp: number,
+  side: "left" | "right"
+): boolean {
+  if (!node) {
+    return true;
+  }
+
+  if (
+    (side === "left" && comp <= node.data) ||
+    (side === "right" && comp >= node.data)
+  ) {
     return false;
   }
 
-  return isBinarySearch(right) && isBinarySearch(left);
+  return compare(node.left, comp, side) && compare(node.right, comp, side);
 }

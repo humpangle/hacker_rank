@@ -5,14 +5,14 @@ it("raises when node data is empty", () => {
 });
 
 it("makes single node data", () => {
-  const { data, left, right } = makeNode([1]) as Node;
+  const { data, left, right } = makeNode([1]);
   expect(data).toBe(1);
   expect(left).toBeNull();
   expect(right).toBeNull();
 });
 
 it("makes node for 2 node data", () => {
-  const node = makeNode([1, 2]) as Node;
+  const node = makeNode([1, 2]);
   expect(node.data).toBe(2);
 
   const left = node.left as Node;
@@ -27,7 +27,7 @@ it("makes node for 2 node data", () => {
 });
 
 it("makes node for 3 node data", () => {
-  const node = makeNode([1, 2, 3]) as Node;
+  const node = makeNode([1, 2, 3]);
   expect(node.data).toBe(2);
 
   const left = node.left as Node;
@@ -49,29 +49,34 @@ it("walks node with 2 data", () => {
   const numData = Math.ceil(Math.random() * 19) + 1;
   expect(numData).toBeLessThan(21);
 
-  const nodeData = Array.from(Array(numData), (x, index) => index);
+  const nodeData = Array.from({ length: numData }, (x, index) => index);
 
-  const node = makeNode(nodeData) as Node;
+  const node = makeNode(nodeData);
   expect(walk(node)).toEqual(nodeData);
 });
 
 test("isBinarySearch is true for single data node", () => {
-  const node = makeNode([1]) as Node;
+  const node = makeNode([1]);
   expect(isBinarySearch(node)).toBe(true);
 });
 
 test("isBinarySearch is false for unbalanced node", () => {
-  const node = makeNode([1, 2, 3, 4]) as Node;
+  const node = makeNode([1, 2, 3, 4]);
   const result = isBinarySearch(node);
   expect(result).toBe(false);
 });
 
 test("isBinarySearch is true for binary search node", () => {
-  const node = makeNode([1, 2, 3]) as Node;
+  const node = makeNode([1, 2, 3]);
   expect(isBinarySearch(node)).toBe(true);
 });
 
-test("isBinarySearch is true for binary search node", () => {
-  const node = makeNode([1, 2, 3, 5, 4, 6, 7]) as Node;
+test("isBinarySearch is false for binary search node", () => {
+  const node = makeNode([1, 2, 3, 5, 4, 6, 7]);
   expect(isBinarySearch(node)).toBe(false);
+});
+
+test("isBinarySearch is true for binary search node 2", () => {
+  const node = makeNode([1, 2, 3, 4, 5, 6, 7]);
+  expect(isBinarySearch(node)).toBe(true);
 });
