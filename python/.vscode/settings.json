@@ -1,11 +1,3 @@
 {
-  "python.pythonPath": "C:\\Users\\maneptha\\Miniconda3\\envs\\django\\python.exe",
-
-  "python.linting.pylintEnabled": true,
-  "editor.formatOnSave": true,
-  "code-runner.executorMap": {
-    "python": "C:\\Users\\maneptha\\Miniconda3\\envs\\django\\python -u"
-  },
-  "code-runner.cwd": "",
-  "python.unitTest.pyTestEnabled": true
+  "code-runner.cwd": ""
 }
