@@ -50,6 +50,16 @@ doA("a")
   })
   .then(res => console.log("c result = ", res));
 
+(async function doWait() {
+  try {
+    console.log("await a result = ", await doA("a"));
+    console.log("await b result = ", await doB("b"));
+    console.log("await c result = ", await doC("c"));
+  } catch (error) {
+    console.log(error);
+  }
+})();
+
 Promise.race([doA("a"), doB("b"), doC("c")]).then(r =>
   console.log("first result is ", r)
 );
