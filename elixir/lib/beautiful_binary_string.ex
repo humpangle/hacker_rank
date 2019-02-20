@@ -17,5 +17,3 @@ defmodule BeautifulBinaryString do
   def beautify(<<@zero, @one, @zero, r::binary>>, c), do: beautify(r, c + 1)
   def beautify(<<_, r::binary>>, c), do: beautify(r, c)
 end
-
-BeautifulBinaryString.run()
