@@ -20,7 +20,7 @@
   "settings": {
     "debug.node.autoAttach": "on",
     "[javascript]": {
-      "editor.formatOnSave": false
+      "editor.formatOnSave": true
     }
   }
 }
