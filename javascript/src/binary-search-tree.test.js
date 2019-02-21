@@ -4,7 +4,7 @@ const {
   isBinarySearch,
   makeNodeBF,
   walkBF
-} = require("./experiment");
+} = require("./binary-search-tree");
 
 it("raises when node data is empty", () => {
   expect(() => makeNode([])).toThrowError(/must/);
