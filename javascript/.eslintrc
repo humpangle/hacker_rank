@@ -10,7 +10,8 @@
     "no-param-reassign": 0,
     "import/prefer-default-export": 0,
     "no-use-before-define": ["error", { "functions": false }],
-    "no-return-assign": 0
+    "no-return-assign": 0,
+    "prefer-destructuring": 0
   },
   "env": {
     "browser": true,
