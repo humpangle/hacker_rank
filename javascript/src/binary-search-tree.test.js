@@ -1,4 +1,10 @@
-import { Node, walk, makeNode, isBinarySearch } from "./binary-search-tree";
+const {
+  makeNode,
+  walk,
+  isBinarySearch,
+  makeNodeBF,
+  walkBF
+} = require("./experiment");
 
 it("raises when node data is empty", () => {
   expect(() => makeNode([])).toThrowError(/must/);
@@ -15,8 +21,8 @@ it("makes node for 2 node data", () => {
   const node = makeNode([1, 2]);
   expect(node.data).toBe(2);
 
-  const left = node.left as Node;
-  const right = node.right;
+  const { left } = node;
+  const { right } = node;
 
   expect(typeof left).toBe("object");
   expect(right).toBeNull();
@@ -30,8 +36,8 @@ it("makes node for 3 node data", () => {
   const node = makeNode([1, 2, 3]);
   expect(node.data).toBe(2);
 
-  const left = node.left as Node;
-  const right = node.right as Node;
+  const { left } = node;
+  const { right } = node;
 
   expect(typeof left).toBe("object");
   expect(typeof right).toBe("object");
@@ -79,4 +85,9 @@ test("isBinarySearch is false for binary search node", () => {
 test("isBinarySearch is true for binary search node 2", () => {
   const node = makeNode([1, 2, 3, 4, 5, 6, 7]);
   expect(isBinarySearch(node)).toBe(true);
+});
+
+test("breadth first", () => {
+  const node = makeNodeBF([3, 5, 2, 1, 4, 6, 7]);
+  expect(walkBF(node)).toEqual([3, 2, 5, 1, 4, 6, 7]);
 });
