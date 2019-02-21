@@ -45,8 +45,8 @@ it("makes node for 3 node data", () => {
   expect(right.right).toBeNull();
 });
 
-it("walks node with 2 data", () => {
-  const numData = Math.ceil(Math.random() * 19) + 1;
+it("walks node with any number of data", () => {
+  const numData = 1 + Math.ceil(Math.random() * 19);
   expect(numData).toBeLessThan(21);
 
   const nodeData = Array.from({ length: numData }, (x, index) => index);
