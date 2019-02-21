@@ -1,4 +1,4 @@
-class SinglyLinkedListNode {
+class Node {
   constructor(nodeData) {
     this.data = nodeData;
     this.next = null;
@@ -12,7 +12,7 @@ class SinglyLinkedList {
   }
 
   insertNode(nodeData) {
-    const node = new SinglyLinkedListNode(nodeData);
+    const node = new Node(nodeData);
 
     if (this.head == null) {
       this.head = node;
@@ -40,8 +40,6 @@ function getNode(head, positionFromTail) {
   return list[list.length - 1 - positionFromTail];
 }
 
-exports.getNode = getNode;
-
 function fromLine(line) {
   const root = new SinglyLinkedList();
   line
@@ -51,4 +49,7 @@ function fromLine(line) {
   return root;
 }
 
-exports.fromLine = fromLine;
+module.exports = {
+  fromLine,
+  getNode
+};
