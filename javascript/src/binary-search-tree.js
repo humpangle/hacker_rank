@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-function makeNode(array) {
+function makeNodeDF(array) {
   const len = array.length;
 
   if (len === 0) {
@@ -20,20 +20,20 @@ function makeNode(array) {
     return root;
   }
 
-  root.left = makeNode(array.slice(0, mid));
-  root.right = len > 2 ? makeNode(array.slice(mid + 1)) : null;
+  root.left = makeNodeDF(array.slice(0, mid));
+  root.right = len > 2 ? makeNodeDF(array.slice(mid + 1)) : null;
 
   return root;
 }
 
-function walk(root) {
+function walkDF(root) {
   if (!root) {
     return [];
   }
 
-  return ((root.left && walk(root.left)) || [])
+  return ((root.left && walkDF(root.left)) || [])
     .concat([root.data])
-    .concat((root.right && walk(root.right)) || []);
+    .concat((root.right && walkDF(root.right)) || []);
 }
 
 function isBinarySearch(root) {
@@ -157,8 +157,8 @@ function walkBFNode(node, acc, level) {
 }
 
 module.exports = {
-  makeNode,
-  walk,
+  makeNodeDF,
+  walkDF,
   isBinarySearch,
   walkBF,
   makeNodeBF
