@@ -15,18 +15,20 @@ export class Node<T> {
   }
 
   traverseBF(callback: (node: Node<T>) => void) {
-    const queue = new Queue<Node<T>>();
+    const queue = {} as { [k: number]: Node<T> };
+    let indexIn = 0;
+    let indexOut = 0;
     let current = this as Node<T>;
 
     while (current) {
       const children = current.children;
 
-      for (let i = 0; i < children.length; i++) {
-        queue.enqueue(children[i]);
+      for (let j = 0; j < children.length; j++) {
+        queue[indexIn++] = children[j];
       }
 
       callback(current);
-      current = queue.dequeue() as Node<T>;
+      current = queue[indexOut++];
     }
   }
 

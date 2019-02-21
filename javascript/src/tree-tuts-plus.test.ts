@@ -1,7 +1,7 @@
 import { Queue, Node } from "./tree-tuts-plus";
 
 test("queue", () => {
-  let q = new Queue();
+  const q = new Queue();
   expect(q.size()).toBe(0);
 
   q.enqueue(1);
