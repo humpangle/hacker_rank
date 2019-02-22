@@ -44,20 +44,30 @@ Copyright 2009–2019 by Codility Limited. All Rights Reserved. Unauthorized cop
 
 function solution(a) {
   let sum = 0;
+  let adder = 1;
+  let zeroSeen = false;
 
   for (let i = 0; i < a.length; i++) {
+    if (zeroSeen) {
+      break;
+    }
+
     const el = a[i];
 
     if (el === 0) {
+      zeroSeen = true;
+
       for (let j = i + 1; j < a.length; j++) {
         const eln = a[j];
 
         if (eln === 1) {
-          ++sum;
+          sum += adder;
 
           if (sum > 1000000000) {
             return -1;
           }
+        } else {
+          ++adder;
         }
       }
     }
