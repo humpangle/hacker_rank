@@ -39,4 +39,28 @@ function bubbleSort(array) {
   return array;
 }
 
-module.exports = { selectionSort, bubbleSort };
+function insertionSort(array) {
+  for (let lastIndex = 1; lastIndex < array.length; lastIndex++) {
+    let lastValue = array[lastIndex];
+    let currentIndex = lastIndex;
+
+    for (; currentIndex > 0; currentIndex--) {
+      let elB4last = array[currentIndex - 1];
+
+      /**
+       * already sorted
+       */
+      if (lastValue >= elB4last) {
+        break;
+      }
+
+      array[currentIndex] = elB4last;
+    }
+
+    array[currentIndex] = lastValue;
+  }
+
+  return array;
+}
+
+module.exports = { selectionSort, bubbleSort, insertionSort };

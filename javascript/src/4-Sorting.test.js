@@ -1,4 +1,4 @@
-const { selectionSort, bubbleSort } = require("./4-Sorting");
+const { selectionSort, bubbleSort, insertionSort } = require("./4-Sorting");
 
 const data = [
   [[5, 2, 8, 14, 1, 16], [1, 2, 5, 8, 14, 16]],
@@ -12,4 +12,8 @@ test("bubbleSort", () => {
 
 test("selection sort", () => {
   data.forEach(([a, b]) => expect(selectionSort([...a])).toEqual(b));
+});
+
+test("insertionSort", () => {
+  data.forEach(([a, b]) => expect(insertionSort([...a])).toEqual(b));
 });
