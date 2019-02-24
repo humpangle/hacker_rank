@@ -63,4 +63,48 @@ function insertionSort(array) {
   return array;
 }
 
-module.exports = { selectionSort, bubbleSort, insertionSort };
+function mergeSort(array) {
+  let len = array.length;
+
+  if (len < 2) {
+    return array;
+  }
+
+  let mid = Math.floor(len / 2);
+  let left = array.slice(0, mid);
+  let right = array.slice(mid);
+
+  left = mergeSort(left);
+  right = mergeSort(right);
+  let lenLeft = left.length;
+  let lenRight = right.length;
+
+  let i = 0;
+  let j = 0;
+  let k = 0;
+
+  while (i < lenLeft && j < lenRight) {
+    let leftEl = left[i];
+    let rightEl = right[j];
+
+    if (leftEl < rightEl) {
+      array[k++] = leftEl;
+      ++i;
+    } else {
+      array[k++] = rightEl;
+      ++j;
+    }
+  }
+
+  while (i < lenLeft) {
+    array[k++] = left[i++];
+  }
+
+  while (j < lenRight) {
+    array[k++] = right[j++];
+  }
+
+  return array;
+}
+
+module.exports = { selectionSort, bubbleSort, insertionSort, mergeSort };
