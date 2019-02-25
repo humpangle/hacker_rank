@@ -2,7 +2,7 @@
 import importlib
 import os
 import sys
-from test import Node, is_binary_search
+from binary_search_tree import Node, is_binary_search
 
 import pytest
 

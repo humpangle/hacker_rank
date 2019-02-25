@@ -1,5 +1,13 @@
 from typing import List
 
+""" Node is defined as
+        class node:
+            def __init__(self, data):
+                self.data = data
+                self.left = None
+                self.right = None
+"""
+
 NodeData = List[int]
 
 
@@ -29,10 +37,11 @@ class Node(object):
         node.right = cls.make_node(node_data[mid+1:]) if len_data > 2 else None
         return node
 
+
 def walk(node):
-        data, left, right = node.data, node.left, node.right
-        return ([] if left == None else walk(left)) + [data] + \
-            ([] if right == None else walk(right))
+    data, left, right = node.data, node.left, node.right
+    return ([] if left == None else walk(left)) + [data] + \
+        ([] if right == None else walk(right))
 
 
 def is_binary_search(root: Node):
@@ -43,7 +52,7 @@ def is_binary_search(root: Node):
     if not left or not right:
         return False
 
-    if [x for x in walk(left) if x >= data ] or \
+    if [x for x in walk(left) if x >= data] or \
             [y for y in walk(right) if y <= data]:
         return False
 
