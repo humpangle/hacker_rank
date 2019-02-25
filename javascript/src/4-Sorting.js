@@ -40,24 +40,24 @@ function bubbleSort(array) {
 }
 
 function insertionSort(array) {
-  for (let lastIndex = 1; lastIndex < array.length; lastIndex++) {
-    let lastValue = array[lastIndex];
-    let currentIndex = lastIndex;
+  for (let backIndex = 1; backIndex < array.length; backIndex++) {
+    const back = array[backIndex];
+    let insertionIndex = backIndex;
 
-    for (; currentIndex > 0; currentIndex--) {
-      let elB4last = array[currentIndex - 1];
+    for (; insertionIndex > 0; insertionIndex--) {
+      const front = array[insertionIndex - 1];
 
       /**
-       * already sorted
+       * Already sorted
        */
-      if (lastValue >= elB4last) {
+      if (back >= front) {
         break;
       }
 
-      array[currentIndex] = elB4last;
+      array[insertionIndex] = front;
     }
 
-    array[currentIndex] = lastValue;
+    array[insertionIndex] = back;
   }
 
   return array;
@@ -71,37 +71,33 @@ function mergeSort(array) {
   }
 
   let mid = Math.floor(len / 2);
-  let left = array.slice(0, mid);
-  let right = array.slice(mid);
+  let leftArray = mergeSort(array.slice(0, mid));
+  let rightArray = mergeSort(array.slice(mid));
+  let leftLen = leftArray.length;
+  let rightLen = rightArray.length;
+  let leftIndex = 0;
+  let rightIndex = 0;
+  let index = 0;
 
-  left = mergeSort(left);
-  right = mergeSort(right);
-  let lenLeft = left.length;
-  let lenRight = right.length;
+  while (leftIndex < leftLen && rightIndex < rightLen) {
+    let leftVal = leftArray[leftIndex];
+    let rightVal = rightArray[rightIndex];
 
-  let i = 0;
-  let j = 0;
-  let k = 0;
-
-  while (i < lenLeft && j < lenRight) {
-    let leftEl = left[i];
-    let rightEl = right[j];
-
-    if (leftEl < rightEl) {
-      array[k++] = leftEl;
-      ++i;
+    if (leftVal < rightVal) {
+      array[index++] = leftVal;
+      ++leftIndex;
     } else {
-      array[k++] = rightEl;
-      ++j;
+      array[index++] = rightVal;
+      ++rightIndex;
     }
   }
 
-  while (i < lenLeft) {
-    array[k++] = left[i++];
+  while (leftIndex < leftLen) {
+    array[index++] = leftArray[leftIndex++];
   }
 
-  while (j < lenRight) {
-    array[k++] = right[j++];
+  while (rightIndex < rightLen) {
+    array[index++] = rightArray[rightIndex++];
   }
 
   return array;
