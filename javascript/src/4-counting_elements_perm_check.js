@@ -49,23 +49,24 @@ Copyright 2009–2019 by Codility Limited. All Rights Reserved. Unauthorized cop
  */
 
 function solution(a) {
-  let len = a.length;
   let memo = {};
+  let len = a.length;
 
-  for (let i = 0; i < len; i++) {
-    let el = a[i];
-    memo[el] = (memo[el] || 0) + 1;
+  for (const el of a) {
+    if (el > len || memo[el]) {
+      return 0;
+    }
+
+    memo[el] = true;
   }
 
-  for (let j = 1; j <= len; j++) {
-    if (memo[j] === 1) {
-      delete memo[j];
-    } else {
+  for (let i = 1; i < len + 1; i++) {
+    if (!memo[i]) {
       return 0;
     }
   }
 
-  return Object.keys(memo).length === 0 ? 1 : 0;
+  return 1;
 }
 
 module.exports = { solution };

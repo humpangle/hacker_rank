@@ -41,27 +41,23 @@ Copyright 2009–2019 by Codility Limited. All Rights Reserved. Unauthorized cop
  */
 
 function solution(s, p, q) {
-  const impactFactors = {
+  const map = {
     A: 1,
     C: 2,
     G: 3,
     T: 4
   };
-
   let result = [];
-  let len = p.length;
 
-  for (let i = 0; i < len; i++) {
-    let ep = p[i];
-    let eq = q[i];
-    let min = null;
-    for (let j = ep; j <= eq; j++) {
-      const e = impactFactors[s[j]];
-      if (e === 1) {
-        min = 1;
-        break;
-      } else if (min === null || min > e) {
-        min = e;
+  for (let i = 0; i < p.length; i++) {
+    const a = p[i];
+    const b = q[i] + 1;
+    let min = 4;
+
+    for (let j = a; j < b; j++) {
+      const el = map[s[j]];
+      if (el < min) {
+        min = el;
       }
     }
 

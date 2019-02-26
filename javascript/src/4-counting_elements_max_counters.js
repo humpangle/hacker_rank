@@ -57,24 +57,28 @@ Copyright 2009–2019 by Codility Limited. All Rights Reserved. Unauthorized cop
 
 function solution(n, a) {
   let result = Array(n).fill(0);
-  let max;
-  let lastMax = 0;
+  let n1 = n + 1;
+  let max = 0;
+  let changeMax = false;
 
-  for (let i = 0; i < a.length; i++) {
-    let el = a[i] - 1;
+  for (let el of a) {
+    if (el === n1) {
+      if (changeMax) {
+        changeMax = true;
 
-    if (el === n) {
-      max = Math.max.apply(null, result);
-
-      if (max !== lastMax) {
-        lastMax = max;
-
-        for (let j = 0; j < n; j++) {
-          result[j] = max;
+        for (let i = 0; i < n; i++) {
+          result[i] = max;
         }
       }
     } else {
-      result[el] += 1;
+      let j = result[el - 1];
+      result[el - 1] = ++j;
+
+      if (j > max) {
+        max = j;
+      }
+
+      changeMax = true;
     }
   }
 
