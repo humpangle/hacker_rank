@@ -7,22 +7,22 @@ export class SinglyLinkedListNode {
 
 export function reverse(head) {
   if (!head) return;
-  let s = {};
+  const queue = {};
   let c = 0;
   let curr;
   while (head) {
     curr = head;
     head = head.next;
     curr.next = null;
-    s[++c] = curr;
+    queue[++c] = curr;
   }
 
-  head = s[c--];
+  head = queue[c--];
   let prev = head;
   let t;
 
   while (c > 0) {
-    t = s[c--];
+    t = queue[c--];
     prev.next = t;
     prev = t;
   }
