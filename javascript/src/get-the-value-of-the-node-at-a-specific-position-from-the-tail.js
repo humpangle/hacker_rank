@@ -36,7 +36,6 @@ function walk(node) {
 
 function getNode(head, positionFromTail) {
   const list = walk(head);
-  console.log("list walk", list);
   return list[list.length - 1 - positionFromTail];
 }
 

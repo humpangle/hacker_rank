@@ -35,9 +35,9 @@ class DoublyList {
   }
 
   searchNodeAt(position) {
-    let { head, length } = this;
+    let { head } = this;
 
-    if (position < 0 || position > length) {
+    if (position < 0 || position > this.length) {
       return undefined;
     }
 
@@ -53,7 +53,7 @@ class DoublyList {
   }
 
   removeNodeAt(position) {
-    let { length } = this;
+    const { length } = this;
 
     // negative indexing
     if (position < 0) {
@@ -61,6 +61,7 @@ class DoublyList {
     }
 
     let node = this.searchNodeAt(position);
+
     if (node.previous) {
       node.previous.next = node.next;
     } else {
@@ -110,18 +111,15 @@ class LinkedList {
   walk() {
     const result = [this.head];
     let { tail } = this;
+
     while (tail) {
       result.push(tail.head);
-      // eslint-disable-next-line prefer-destructuring
       tail = tail.tail;
     }
 
     return result.reverse();
   }
 }
-
-// const list = LinkedList.fromArray([1, 2, 3, 4, 5]);
-// console.log("list = ", list.walk());
 
 module.exports = {
   DoublyList,

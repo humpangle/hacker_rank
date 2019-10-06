@@ -60,15 +60,13 @@ export class Node<T> {
   }
 }
 
-// tslint:disable-next-line: max-classes-per-file
 export class Queue<T> {
   head = 0;
   tail = 0;
   storage: { [key: number]: T } = {};
 
   enqueue(data: T) {
-    this.storage[this.tail] = data;
-    ++this.tail;
+    this.storage[this.tail++] = data;
   }
 
   dequeue(): T | null {
